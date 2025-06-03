@@ -4,14 +4,15 @@ const gameController = {
     // Create a new game
     create: async (req, res) => {
         try {
-            const { name, price, genre, release_date, overall_rating, review } = req.body;
+            const { name, price, genre, release_date, overall_rating, review, image } = req.body;
             const game = await Game.create({
                 name,
                 price,
                 genre,
                 release_date,
                 overall_rating,
-                review
+                review,
+                image
             });
             res.status(201).json(game);
         } catch (error) {
@@ -58,13 +59,13 @@ const gameController = {
     // Update a game by ID
     update: async (req, res) => {
         const { id } = req.params;
-        const { name, price, genre, release_date, overall_rating, review } = req.body;
+        const { name, price, genre, release_date, overall_rating, review, image } = req.body;
         try {
             const game = await Game.findByPk(id);
             if (!game) {
                 return res.status(404).json({ message: 'Game not found.' });
             }
-            await game.update({ name, price, genre, release_date, overall_rating, review });
+            await game.update({ name, price, genre, release_date, overall_rating, review, image });
             res.json({ message: 'Game updated successfully.', game });
         } catch (error) {
             console.error('Error updating game:', error);

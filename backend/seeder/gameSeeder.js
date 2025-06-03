@@ -13,7 +13,8 @@ async function seedGames() {
                 genre: 'Action-Adventure',
                 release_date: '2017-03-03',
                 overall_rating: 9.5,
-                review: 'An open-world masterpiece with stunning visuals and gameplay.'
+                review: 'An open-world masterpiece with stunning visuals and gameplay.',
+                image:'public/images/zelda-botw.jpg'
             },
             {
                 name: 'Super Mario Odyssey',
@@ -21,7 +22,8 @@ async function seedGames() {
                 genre: 'Platformer',
                 release_date: '2017-10-27',
                 overall_rating: 9.3,
-                review: 'A delightful platformer that brings back the magic of Mario.'
+                review: 'A delightful platformer that brings back the magic of Mario.',
+                image: 'public/images/mario-odyssey.jpg'
             },
             {
                 name: 'Dark Souls III',
@@ -29,7 +31,8 @@ async function seedGames() {
                 genre: 'Action RPG',
                 release_date: '2016-03-24',
                 overall_rating: 9.0,
-                review: 'A challenging and rewarding experience for hardcore gamers.'
+                review: 'A challenging and rewarding experience for hardcore gamers.',
+                image: 'public/images/dark-souls-3.jpg'
             },
             {
                 name: 'The Witcher 3: Wild Hunt',
@@ -37,7 +40,8 @@ async function seedGames() {
                 genre: 'Action RPG',
                 release_date: '2015-05-19',
                 overall_rating: 9.8,
-                review: 'An epic tale with a vast open world and rich storytelling.'
+                review: 'An epic tale with a vast open world and rich storytelling.',
+                image: 'public/images/the-witcher-3.jpg'
             },
             {
                 name: 'Celeste',
@@ -45,7 +49,8 @@ async function seedGames() {
                 genre: 'Platformer',
                 release_date: '2018-01-25',
                 overall_rating: 9.4,
-                review: 'A touching story about overcoming personal challenges through platforming.'
+                review: 'A touching story about overcoming personal challenges through platforming.',
+                image: 'public/images/celeste.jpg'
             }
         ];
 
