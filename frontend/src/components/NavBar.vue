@@ -5,7 +5,7 @@ import InputText from 'primevue/inputtext';
 <template>
   <nav class="flex justify-between items-center h-[5vh] w-full px-12 bg-white/20 backdrop-blur-md">
     <div class="flex items-center">
-      <h1 class="text-purple-700 font-bold text-xl">GS</h1>
+      <h1 class="text-purple-500 text-xl">GS</h1>
     </div>
 
     <ul class="flex space-x-6 font-medium">
@@ -14,7 +14,7 @@ import InputText from 'primevue/inputtext';
       <li>Magasins</li>
     </ul>
 
-    <div class="flex items-center space-x-2 !bg-gray-400 !rounded-md !px-2 !h-[70%]">
+    <div class="flex items-center space-x-2 !bg-gray-300 !rounded-md !px-2 !h-[70%] !text-black">
       <i class="pi pi-search" />
       <InputText
         v-model="search"
