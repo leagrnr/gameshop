@@ -23,7 +23,7 @@ async function seedGames() {
                 release_date: '2017-10-27',
                 overall_rating: 9.3,
                 review: 'A delightful platformer that brings back the magic of Mario.',
-                image: 'public/images/mario-odyssey.jpg'
+                image: 'public/images/mario-odyssey.jpeg'
             },
             {
                 name: 'Dark Souls III',

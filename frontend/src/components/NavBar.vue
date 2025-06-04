@@ -3,7 +3,7 @@ import InputText from 'primevue/inputtext';
 </script>
 
 <template>
-  <nav class="flex justify-between items-center h-[5vh] w-full px-12 bg-white/20 backdrop-blur-md">
+  <nav class="flex justify-between items-center h-[5vh] w-full px-12 bg-white/20 backdrop-blur-md fixed top-0 left-0 z-50">
     <div class="flex items-center">
       <h1 class="text-purple-500 text-xl">GS</h1>
     </div>
