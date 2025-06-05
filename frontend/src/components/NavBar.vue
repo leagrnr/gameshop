@@ -1,5 +1,19 @@
 <script setup>
-import InputText from 'primevue/inputtext';
+import { ref, watch } from 'vue'
+import InputText from 'primevue/inputtext'
+import api from '../services/api'
+
+const search = ref('')
+const results = ref([])
+
+watch(search, async (val) => {
+  if (val) {
+    const res = await api.get('/games', { params: { search: val } })
+    results.value = res.data
+  } else {
+    results.value = []
+  }
+})
 </script>
 
 <template>
@@ -14,13 +28,24 @@ import InputText from 'primevue/inputtext';
       <li>Magasins</li>
     </ul>
 
-    <div class="flex items-center space-x-2 !bg-gray-300 !rounded-md !px-2 !h-[70%] !text-black">
+    <div class="flex items-center space-x-2 !bg-gray-300 !rounded-md !px-2 !h-[70%] !text-black relative">
       <i class="pi pi-search" />
       <InputText
         v-model="search"
         placeholder="Recherche..."
-        class="h-[70%] w-full max-w-xs border px-3 rounded-md focus:ring-2 focus:ring-blue-300"
       />
+      <ul
+        v-if="results.length"
+        class="absolute left-0 top-full mt-1 w-full bg-white text-black rounded shadow-lg z-50"
+      >
+        <li
+          v-for="game in results"
+          :key="game.id"
+          class="px-4 py-2 hover:bg-purple-100 cursor-pointer"
+        >
+          {{ game.name }}
+        </li>
+      </ul>
     </div>
 
     <div class="flex items-center space-x-4">

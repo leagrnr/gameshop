@@ -22,7 +22,7 @@ const baseUrl = import.meta.env.VITE_BASE_URL;
     <div class="absolute inset-0 p-6 flex flex-col justify-end z-20">
       <h2 class="text-lg font-bold text-center">{{ game.name }}</h2>
       <p class="text-md font-bold mt-1 text-center">{{ game.price }}€</p>
-      <Button/>
+      <Button :game="game" />
     </div>
   </div>
 </template>

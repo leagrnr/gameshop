@@ -27,7 +27,6 @@ onMounted(async () => {
         :numScroll="1"
         class="mx-auto w-[95vw]"
         circular
-        :autoplayInterval="3000"
       >
         <template #item="slotProps">
           <div class="flex justify-center items-center h-full">
@@ -46,7 +45,6 @@ onMounted(async () => {
         :numScroll="1"
         class="mx-auto w-[95vw]"
         circular
-        :autoplayInterval="3000"
       >
         <template #item="slotProps">
           <div class="flex justify-center items-center h-full">

@@ -27,7 +27,12 @@ const gameController = {
     // Get all games
     getAll: async (req, res) => {
         try {
-            const games = await Game.findAll();
+            const { search } = req.query;
+            let where = {};
+            if (search) {
+                where.name = { [require('sequelize').Op.like]: `%${search}%` };
+            }
+            const games = await Game.findAll({ where });
             res.json(games);
         } catch (error) {
             console.error('Error retrieving games:', error);
