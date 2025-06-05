@@ -17,15 +17,15 @@ watch(search, async (val) => {
 </script>
 
 <template>
-  <nav class="flex justify-between items-center h-[5vh] w-full px-12 bg-white/20 backdrop-blur-md fixed top-0 left-0 z-50">
+  <nav class="flex justify-between items-center h-[5vh] w-full px-12 bg-gray-500/80 backdrop-blur-md fixed top-0 left-0 z-50">
     <div class="flex items-center">
       <h1 class="text-purple-500 text-xl">GS</h1>
     </div>
 
     <ul class="flex space-x-6 font-medium">
-      <li>Accueil</li>
-      <li>Jeux</li>
-      <li>Magasins</li>
+      <li><a href="#" class="hover:text-purple-600">Accueil</a></li>
+      <li><a href="#" class="hover:text-purple-600">Jeux</a></li>
+      <li><a href="#" class="hover:text-purple-600">Magasins</a></li>
     </ul>
 
     <div class="flex items-center space-x-2 !bg-gray-300 !rounded-md !px-2 !h-[70%] !text-black relative">
@@ -49,12 +49,16 @@ watch(search, async (val) => {
     </div>
 
     <div class="flex items-center space-x-4">
-      <i class="pi pi-user" />
-      <i class="pi pi-shopping-cart" />
-      <div class="flex items-center space-x-1">
-        <i class="pi pi-globe" />
-        <p>FR</p>
-      </div>
+      <a href="#" aria-label="Facebook" class="hover:text-purple-600">
+        <i class="pi pi-user " />
+      </a>
+      <a href="#" aria-label="Facebook" class="hover:text-purple-600">
+        <i class="pi pi-shopping-cart" />
+      </a>
+        <a href="#" aria-label="Facebook" class="hover:text-purple-600 flex items-center space-x-1">
+          <i class="pi pi-globe" />
+          <p>FR</p>
+        </a>
     </div>
   </nav>
 

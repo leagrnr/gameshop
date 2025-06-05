@@ -11,3 +11,8 @@ body {
 h1 {
   font-family: 'Orbitron', sans-serif;
 }
+
+footer {
+  background-color: #3E3E3E ;
+  color: white;
+}

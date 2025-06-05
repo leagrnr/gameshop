@@ -17,10 +17,10 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="space-y-12 px-4 py-8">
+  <div class="space-y-12 px-4">
     <!-- Section Nouveautés -->
     <section>
-      <h2 class="text-3xl font-bold text-white mb-4">Nouveautés</h2>
+      <h2 class="text-3xl font-bold text-white my-[5vh]">Nouveautés</h2>
       <Carousel
         :value="nouveautes"
         :numVisible="3"
@@ -38,7 +38,7 @@ onMounted(async () => {
 
     <!-- Section Prochaines Sorties -->
     <section>
-      <h2 class="text-3xl font-bold text-white mb-4">Prochaines sorties</h2>
+      <h2 class="text-3xl font-bold text-white my-[5vh]">Prochaines sorties</h2>
       <Carousel
         :value="prochainesSorties"
         :numVisible="3"
