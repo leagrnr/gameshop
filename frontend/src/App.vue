@@ -18,5 +18,4 @@ onMounted(async () => {
   <NavBar />
   <CarouselBanner />
   <CarouselProduct />
-  <p>Test</p>
 </template>
