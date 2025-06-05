@@ -14,7 +14,7 @@ async function seedGames() {
                 release_date: '2017-03-03',
                 overall_rating: 9.5,
                 review: 'An open-world masterpiece with stunning visuals and gameplay.',
-                image:'public/images/zelda-botw.jpg'
+                image:'zelda-botw.jpg'
             },
             {
                 name: 'Super Mario Odyssey',
@@ -23,7 +23,7 @@ async function seedGames() {
                 release_date: '2017-10-27',
                 overall_rating: 9.3,
                 review: 'A delightful platformer that brings back the magic of Mario.',
-                image: 'public/images/mario-odyssey.jpeg'
+                image: 'mario-odyssey.jpeg'
             },
             {
                 name: 'Dark Souls III',
@@ -32,7 +32,7 @@ async function seedGames() {
                 release_date: '2016-03-24',
                 overall_rating: 9.0,
                 review: 'A challenging and rewarding experience for hardcore gamers.',
-                image: 'public/images/dark-souls-3.jpg'
+                image: 'dark-souls-3.jpg'
             },
             {
                 name: 'The Witcher 3: Wild Hunt',
@@ -41,7 +41,7 @@ async function seedGames() {
                 release_date: '2015-05-19',
                 overall_rating: 9.8,
                 review: 'An epic tale with a vast open world and rich storytelling.',
-                image: 'public/images/the-witcher-3.jpg'
+                image: 'the-witcher-3.jpg'
             },
             {
                 name: 'Celeste',
@@ -50,7 +50,7 @@ async function seedGames() {
                 release_date: '2018-01-25',
                 overall_rating: 9.4,
                 review: 'A touching story about overcoming personal challenges through platforming.',
-                image: 'public/images/celeste.jpg'
+                image: 'celeste.jpg'
             },
             {
                 name: 'Astro Bot',
@@ -59,7 +59,7 @@ async function seedGames() {
                 release_date: '2024-09-06',
                 overall_rating: 9.2,
                 review: 'A charming platformer.',
-                image: 'public/images/astro-bot.jpg'
+                image: 'astro-bot.jpg'
             },
             {
                 name: 'Death Stranding 2',
@@ -68,7 +68,7 @@ async function seedGames() {
                 release_date: '2025-06-26',
                 overall_rating: null,
                 review: null,
-                image: 'public/images/death-stranding-2.jpg'
+                image: 'death-stranding-2.jpg'
             },
             {
                 name: 'Doom The Dark Ages',
@@ -77,7 +77,7 @@ async function seedGames() {
                 release_date: '2025-04-15',
                 overall_rating: 8.4,
                 review: 'A thrilling return to the classic FPS genre with modern twists.',
-                image: 'public/images/doom.jpg'
+                image: 'doom.jpg'
             },
             {
                 name: 'Elden Ring Nightreign',
@@ -86,7 +86,7 @@ async function seedGames() {
                 release_date: '2025-05-20',
                 overall_rating: 8.6,
                 review: 'A new chapter in the Elden Ring saga with expanded lore and gameplay.',
-                image: 'public/images/elden-ring-nightreign.jpg'
+                image: 'elden-ring-nightreign.jpg'
             },
             {
                 name: 'Clair Obscur : Expedition 33',
@@ -95,7 +95,7 @@ async function seedGames() {
                 release_date: '2025-04-20',
                 overall_rating: 9.4,
                 review: 'An immersive adventure game that explores the depths of human emotion.',
-                image: 'public/images/expedition-33.jpg'
+                image: 'expedition-33.jpg'
             },
             {
                 name: 'Final Fantasy VII Rebirth',
@@ -104,7 +104,7 @@ async function seedGames() {
                 release_date: '2024-02-29',
                 overall_rating: 9.7,
                 review: 'A stunning continuation of the Final Fantasy VII remake, expanding the beloved story with breathtaking visuals and gameplay.',
-                image: 'public/images/ff7-rebirth.jpg'
+                image: 'ff7-rebirth.jpg'
             },
             {
                 name: 'Grand Theft Auto VI',
@@ -113,7 +113,7 @@ async function seedGames() {
                 release_date: '2026-06-28',
                 overall_rating: null,
                 review: null,
-                image: 'public/images/gta6.jpg'
+                image: 'gta6.jpg'
             },
             {
                 name: 'Indiana Jones and the Great Circle',
@@ -122,7 +122,7 @@ async function seedGames() {
                 release_date: '2025-10-15',
                 overall_rating: 8.1,
                 review: 'A thrilling adventure that captures the spirit of the iconic archaeologist.',
-                image: 'public/images/indiana-jones.jpg'
+                image: 'indiana-jones.jpg'
             },
             {
                 name: 'Metal Gear Solid Delta: Snake Eater',
@@ -131,7 +131,7 @@ async function seedGames() {
                 release_date: '2025-09-26',
                 overall_rating: null,
                 review: null,
-                image: 'public/images/metal-gear-solid.jpg'
+                image: 'metal-gear-solid.jpg'
             },
             {
                 name: 'Hell is Us',
@@ -140,7 +140,7 @@ async function seedGames() {
                 release_date: '2025-09-04',
                 overall_rating: null,
                 review: null,
-                image: 'public/images/hell-is-us.jpg'
+                image: 'hell-is-us.jpg'
             },
             {
                 name: 'Mafia the Old Country',
@@ -149,7 +149,7 @@ async function seedGames() {
                 release_date: '2025-08-08',
                 overall_rating: null,
                 review: null,
-                image: 'public/images/mafia-the-old-country.jpg'
+                image: 'mafia-the-old-country.jpg'
             }
         ];
 
