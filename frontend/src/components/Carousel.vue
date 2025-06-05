@@ -25,7 +25,7 @@ onMounted(async () => {
   >
     <template #item="slotProps">
       <img
-        :src="`http://localhost:3000/images/${slotProps.data.image.split('/').pop()}`"
+        :src="`http://localhost:8080/images/${slotProps.data.image.split('/').pop()}`"
         :alt="slotProps.data.name"
         class="w-full h-[75vh] object-cover rounded"
       />
