@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import Carousel from 'primevue/carousel'
-import GameCard from './GameCard.vue'
 import api from '../services/api'
+import GameCard from "@/components/GameCard.vue"
 
 const games = ref([])
 
@@ -15,20 +15,16 @@ onMounted(async () => {
 <template>
   <Carousel
     :value="games"
-    :numVisible="1"
+    :numVisible="3"
     :numScroll="1"
-    class="!w-full mx-auto max-h-[75vh]"
-    :responsiveOptions="responsiveOptions"
+    class="mx-auto w-[95vw]"
     circular
     :autoplayInterval="3000"
-    :showNavigators="false"
   >
     <template #item="slotProps">
-      <img
-        :src="`http://localhost:8080/images/${slotProps.data.image.split('/').pop()}`"
-        :alt="slotProps.data.name"
-        class="w-full h-[75vh] object-cover rounded"
-      />
+      <div class="flex justify-center items-center h-full">
+        <GameCard :game="slotProps.data" :key="slotProps.data.id" />
+      </div>
     </template>
   </Carousel>
 </template>
