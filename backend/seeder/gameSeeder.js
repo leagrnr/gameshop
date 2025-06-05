@@ -6,6 +6,8 @@ async function seedGames() {
         await Game.sync({ force: true }); // Recreate the table
         console.log('Table Game created successfully.');
 
+        const now = new Date();
+
         const games = [
             {
                 name: 'The Legend of Zelda: Breath of the Wild',
@@ -153,7 +155,12 @@ async function seedGames() {
             }
         ];
 
-        await Game.bulkCreate(games);
+        const enrichedGames = games.map(game => ({
+            ...game,
+            status: new Date(game.release_date) > now ? 'prochaine_sortie' : 'nouveaute'
+        }));
+
+        await Game.bulkCreate(enrichedGames);
         console.log('Games seeded successfully.');
     } catch (error) {
         console.error('Error seeding games:', error);

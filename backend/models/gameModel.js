@@ -29,6 +29,10 @@ const Game = sequelize.define('Game', {
     image: {
         type: DataTypes.STRING,
         allowNull: true,
+    },
+    status: {
+        type: DataTypes.STRING,
+        allowNull: false
     }
 });
 
