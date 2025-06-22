@@ -22,16 +22,23 @@ onMounted(() => {
 })
 
 const reviewLikeHtml = computed(() =>
-  props.game.store_review_like.replace(/\n/g, '<br>')
+  (props.game.store_review_like || '').replace(/\n/g, '<br>')
 )
 
 const reviewDislikeHtml = computed(() =>
-  props.game.store_review_dislike.replace(/\n/g, '<br>')
+  (props.game.store_review_dislike || '').replace(/\n/g, '<br>')
 )
 
 const reviewGlobalHtml = computed(() =>
-  props.game.store_review_global.replace(/\n/g, '<br>')
+  (props.game.store_review_global || '').replace(/\n/g, '<br>')
 )
+
+const hasReviewContent = computed(() => {
+  const { store_review_like, store_review_dislike, store_review_global } = props.game
+  return [store_review_like, store_review_dislike, store_review_global].some(
+    val => val && val.trim() !== ''
+  )
+})
 </script>
 
 <template>
@@ -83,16 +90,23 @@ const reviewGlobalHtml = computed(() =>
     </div>
   </div>
 
-  <div class="mt-12 px-8 max-w-4xl mx-auto text-white">
+  <div
+    v-if="hasReviewContent"
+    class="mt-12 px-8 max-w-4xl mx-auto text-white"
+  >
     <h2 class="text-center text-2xl font-bold mb-8">NOTRE AVIS</h2>
-    <h3 class="font-bold text-xl">🌟 Ce qu'on aime</h3>
-    <p v-html="reviewLikeHtml"></p>
-    <h3 class="font-bold text-xl mt-4">⚠️ Ce qui peut déplaire</h3>
-    <p v-html="reviewDislikeHtml"></p>
-    <h3 class="font-bold text-xl mt-4">🧾 Note globale : {{ game.store_rating }}/10</h3>
-    <p v-html="reviewGlobalHtml"></p>
 
+    <h3 v-if="props.game.store_review_like" class="font-bold text-xl">🌟 Ce qu'on aime</h3>
+    <p v-if="props.game.store_review_like" v-html="reviewLikeHtml"></p>
 
+    <h3 v-if="props.game.store_review_dislike" class="font-bold text-xl mt-4">⚠️ Ce qui peut déplaire</h3>
+    <p v-if="props.game.store_review_dislike" v-html="reviewDislikeHtml"></p>
+
+    <h3 v-if="props.game.store_review_global" class="font-bold text-xl mt-4">
+      🧾 Note globale : {{ game.store_rating }}/10
+    </h3>
+    <p v-if="props.game.store_review_global" v-html="reviewGlobalHtml"></p>
   </div>
+
 </template>
 
