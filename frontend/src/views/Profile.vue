@@ -126,8 +126,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex justify-center mt-[10vh] text-white">
-    <div class="flex flex-row items-start space-x-12 max-w-5xl w-full">
+  <div class="flex justify-center mt-[10vh] text-white px-4">
+    <div class="flex flex-col sm:flex-row items-center sm:items-start gap-8 max-w-5xl w-full">
 
       <!-- 📷 Image -->
       <div class="w-40 h-40 rounded-full overflow-hidden shadow-lg border-4 border-white">
@@ -140,7 +140,7 @@ onMounted(() => {
       </div>
 
       <!-- 📄 Profil -->
-      <div class="flex flex-col items-center flex-grow space-y-6">
+      <div class="flex flex-col items-center w-full space-y-6 text-center">
 
         <!-- Nom -->
         <h2 class="text-2xl font-semibold">{{ username }}</h2>
@@ -175,13 +175,13 @@ onMounted(() => {
         </div>
 
         <!-- Zone dynamique -->
-        <div class="mt-8 text-white w-full text-center">
+        <div class="mt-8 w-full max-w-md">
           <p v-if="selectedSection === 'achats'">Aucun achat</p>
           <p v-else-if="selectedSection === 'avis'">Aucun avis</p>
           <p v-else-if="selectedSection === 'precommandes'">Aucune précommande</p>
 
-          <div v-else-if="selectedSection === 'modifier'" class="space-y-4 mt-4 max-w-sm mx-auto text-left">
-            <p class="text-lg font-semibold">Modifier mes informations</p>
+          <div v-else-if="selectedSection === 'modifier'" class="space-y-4 text-left">
+            <p class="text-lg font-semibold text-center">Modifier mes informations</p>
 
             <input
               type="text"
@@ -230,11 +230,11 @@ onMounted(() => {
             </button>
           </div>
         </div>
-
       </div>
     </div>
   </div>
 </template>
+
 
 <style scoped>
 input::file-selector-button {

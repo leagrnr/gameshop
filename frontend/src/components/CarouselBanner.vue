@@ -13,21 +13,23 @@ onMounted(async () => {
 </script>
 
 <template>
-  <Carousel
-    :value="games"
-    :numVisible="1"
-    :numScroll="1"
-    class="!w-full mx-auto max-h-[75vh]"
-    circular
-    :autoplayInterval="3000"
-    :showNavigators="false"
-  >
-    <template #item="slotProps">
-      <img
-        :src="`${imageBaseUrl}${slotProps.data.image}`"
-        :alt="slotProps.data.name"
-        class="w-full h-[75vh] object-cover rounded"
-      />
-    </template>
-  </Carousel>
+  <div class="w-full max-w-[100vw]">
+    <Carousel
+      :value="games"
+      :numVisible="1"
+      :numScroll="1"
+      class="w-full"
+      circular
+      :autoplayInterval="3000"
+      :showNavigators="false"
+    >
+      <template #item="slotProps">
+        <img
+          :src="`${imageBaseUrl}${slotProps.data.image}`"
+          :alt="slotProps.data.name"
+          class="w-full h-[75vh] md:h-[65vh] sm:h-[50vh] xs:h-[40vh] object-cover rounded transition duration-300"
+        />
+      </template>
+    </Carousel>
+  </div>
 </template>

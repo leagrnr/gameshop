@@ -42,33 +42,33 @@ const hasReviewContent = computed(() => {
 </script>
 
 <template>
-  <div class="flex items-start gap-8 mt-[10vh] w-full px-12">
-    <div class="w-1/2 flex justify-center">
+  <div class="flex flex-col lg:flex-row items-start gap-8 mt-[10vh] w-full px-4 sm:px-8 lg:px-12">
+    <div class="w-full lg:w-1/2 flex justify-center">
       <img
         :src="`${imageBaseUrl}${game.image}`"
         :alt="game.name"
-        class="h-[40vh] w-[30vw] rounded object-cover"
+        class="h-[30vh] sm:h-[35vh] md:h-[40vh] w-[80vw] sm:w-[60vw] md:w-[40vw] lg:w-[30vw] rounded object-cover"
       />
     </div>
 
-    <div class="w-1/2 h-[40vh] flex items-center justify-center">
-      <div class="w-full max-w-xl mx-auto flex flex-col justify-between h-full">
-        <h1 class="text-3xl font-bold text-center uppercase">
+    <div class="w-full lg:w-1/2 flex items-center justify-center mt-6 lg:mt-0">
+      <div class="w-full max-w-xl flex flex-col justify-between h-full text-white space-y-4">
+        <h1 class="text-2xl sm:text-3xl font-bold text-center uppercase">
           {{ game.name }}
         </h1>
 
-        <p class="text-justify">
+        <p class="text-justify text-sm sm:text-base">
           {{ game.description }}
         </p>
 
-        <div class="flex justify-center">
+        <div class="flex flex-wrap justify-center gap-2">
           <button
             v-for="platform in platforms"
             :key="platform"
             @click="selectedPlatform = platform.trim()"
             :class="[
-              'font-bold py-2 px-6 rounded-full mx-2 transition-colors duration-200',
-                platform.trim() === selectedPlatform
+              'font-bold py-2 px-6 rounded-full transition-colors duration-200',
+              platform.trim() === selectedPlatform
                 ? 'bg-white text-black'
                 : 'bg-transparent text-white border border-white'
             ]"
@@ -77,8 +77,8 @@ const hasReviewContent = computed(() => {
           </button>
         </div>
 
-        <div class="flex items-center justify-around">
-          <p class="text-2xl font-bold">{{ game.price }}€</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-4">
+          <p class="text-xl font-bold">{{ game.price }}€</p>
           <Button
             :game="game"
             :platform="selectedPlatform"
@@ -92,21 +92,26 @@ const hasReviewContent = computed(() => {
 
   <div
     v-if="hasReviewContent"
-    class="mt-12 px-8 max-w-4xl mx-auto text-white"
+    class="mt-12 px-4 sm:px-8 max-w-4xl mx-auto text-white"
   >
     <h2 class="text-center text-2xl font-bold mb-8">NOTRE AVIS</h2>
 
-    <h3 v-if="props.game.store_review_like" class="font-bold text-xl">🌟 Ce qu'on aime</h3>
-    <p v-if="props.game.store_review_like" v-html="reviewLikeHtml"></p>
+    <div v-if="props.game.store_review_like" class="mb-4">
+      <h3 class="font-bold text-xl">🌟 Ce qu'on aime</h3>
+      <p v-html="reviewLikeHtml" class="text-sm sm:text-base"></p>
+    </div>
 
-    <h3 v-if="props.game.store_review_dislike" class="font-bold text-xl mt-4">⚠️ Ce qui peut déplaire</h3>
-    <p v-if="props.game.store_review_dislike" v-html="reviewDislikeHtml"></p>
+    <div v-if="props.game.store_review_dislike" class="mb-4">
+      <h3 class="font-bold text-xl">⚠️ Ce qui peut déplaire</h3>
+      <p v-html="reviewDislikeHtml" class="text-sm sm:text-base"></p>
+    </div>
 
-    <h3 v-if="props.game.store_review_global" class="font-bold text-xl mt-4">
-      🧾 Note globale : {{ game.store_rating }}/10
-    </h3>
-    <p v-if="props.game.store_review_global" v-html="reviewGlobalHtml"></p>
+    <div v-if="props.game.store_review_global">
+      <h3 class="font-bold text-xl">
+        🧾 Note globale : {{ game.store_rating }}/10
+      </h3>
+      <p v-html="reviewGlobalHtml" class="text-sm sm:text-base"></p>
+    </div>
   </div>
-
 </template>
 

@@ -1,25 +1,21 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
   <footer class="bg-gray-700 text-white py-10 px-6 mt-[5vh]">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-10 items-start">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 text-center lg:text-left">
 
-      <div class="col-span-1 flex items-center h-full">
+      <div class="flex items-center justify-center lg:justify-start">
         <span class="text-purple-500 text-3xl font-light">GS</span>
       </div>
 
-      <div>
+      <div class="flex flex-col items-center lg:items-start">
         <h3 class="font-semibold mb-2">Jeux</h3>
         <ul class="space-y-1 text-sm">
-          <li><a href="#" class="hover:text-purple-400">Tout les jeux</a></li>
+          <li><a href="#" class="hover:text-purple-400">Tous les jeux</a></li>
           <li><a href="#" class="hover:text-purple-400">Prochaines sorties</a></li>
           <li><a href="#" class="hover:text-purple-400">Tests & avis</a></li>
         </ul>
       </div>
 
-      <div>
+      <div class="flex flex-col items-center lg:items-start">
         <h3 class="font-semibold mb-2">Magasins</h3>
         <ul class="space-y-1 text-sm">
           <li><a href="#" class="hover:text-purple-400">Paris</a></li>
@@ -29,7 +25,7 @@
         </ul>
       </div>
 
-      <div>
+      <div class="flex flex-col items-center lg:items-start">
         <h3 class="font-semibold mb-2">Infos</h3>
         <ul class="space-y-1 text-sm">
           <li><a href="#" class="hover:text-purple-400">À propos</a></li>
@@ -39,7 +35,7 @@
         </ul>
       </div>
 
-      <div class="flex flex-col items-start">
+      <div class="flex flex-col items-center lg:items-start">
         <h3 class="font-semibold mb-2">Suivez-nous</h3>
         <div class="flex space-x-4 text-xl">
           <a href="#" aria-label="Facebook" class="hover:text-purple-400">
@@ -53,11 +49,7 @@
           </a>
         </div>
       </div>
+
     </div>
   </footer>
 </template>
-
-
-<style scoped>
-
-</style>

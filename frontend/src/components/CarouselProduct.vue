@@ -7,10 +7,27 @@ import api from '../services/api'
 const nouveautes = ref([])
 const prochainesSorties = ref([])
 
+const responsiveOptions = [
+  {
+    breakpoint: '1024px',
+    numVisible: 3,
+    numScroll: 1
+  },
+  {
+    breakpoint: '768px',
+    numVisible: 2,
+    numScroll: 1
+  },
+  {
+    breakpoint: '480px',
+    numVisible: 1,
+    numScroll: 1
+  }
+]
+
 onMounted(async () => {
   const res = await api.get('/games')
   const allGames = res.data
-
   nouveautes.value = allGames.filter(game => game.status === 'nouveaute')
   prochainesSorties.value = allGames.filter(game => game.status === 'prochaine_sortie')
 })
@@ -24,6 +41,7 @@ onMounted(async () => {
         :value="nouveautes"
         :numVisible="3"
         :numScroll="1"
+        :responsiveOptions="responsiveOptions"
         class="mx-auto w-[95vw]"
         circular
       >
@@ -40,6 +58,8 @@ onMounted(async () => {
       <Carousel
         :value="prochainesSorties"
         :numVisible="3"
+        :numScroll="1"
+        :responsiveOptions="responsiveOptions"
         class="mx-auto w-[95vw]"
         circular
       >
@@ -52,3 +72,4 @@ onMounted(async () => {
     </section>
   </div>
 </template>
+
