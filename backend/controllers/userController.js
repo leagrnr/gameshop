@@ -5,7 +5,6 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET;
 
-
 const userController = {
     login: async (req, res) => {
         const { email, password } = req.body;
@@ -29,20 +28,21 @@ const userController = {
                 JWT_SECRET,
                 { expiresIn: '1h' }
             );
+
             res.json({
                 message: 'Connexion réussie',
                 token,
                 user: {
                     id: user.id,
                     username: user.username,
-                    email: user.email
+                    email: user.email,
+                    profileImage: user.profileImage
                 }
             });
         } catch (error) {
             res.status(500).json({ message: 'Erreur lors de la connexion.' });
         }
     },
-
 
     create: async (req, res) => {
         try {
@@ -58,7 +58,8 @@ const userController = {
             res.status(201).json({
                 id: user.id,
                 username: user.username,
-                email: user.email
+                email: user.email,
+                profileImage: user.profileImage
             });
         } catch (error) {
             console.error('Error creating user:', error);
@@ -71,7 +72,9 @@ const userController = {
 
     getAll: async (req, res) => {
         try {
-            const users = await User.findAll({ attributes: ['id', 'username', 'email', 'profileImage'] });
+            const users = await User.findAll({
+                attributes: ['id', 'username', 'email', 'profileImage']
+            });
             res.json(users);
         } catch (error) {
             console.error('Error retrieving users:', error);
@@ -83,7 +86,7 @@ const userController = {
         const { id } = req.params;
         try {
             const user = await User.findByPk(id, {
-                attributes: ['id', 'username', 'email']
+                attributes: ['id', 'username', 'email', 'profileImage']
             });
 
             if (!user) {
@@ -97,32 +100,37 @@ const userController = {
         }
     },
 
-       update: async (req, res) => {
-            const { id } = req.params;
-            const { username, email, password } = req.body;
+    update: async (req, res) => {
+        const { id } = req.params;
+        const { username, email, password } = req.body;
 
-            try {
-                const user = await User.findByPk(id);
-                if (!user) {
-                    return res.status(404).json({ message: 'User not found.' });
-                }
-
-                user.username = username;
-                user.email = email;
-                if (password) {
-                    user.password = await bcrypt.hash(password, 10);
-                }
-                await user.save();
-
-                res.json(user);
-            } catch (error) {
-                console.error('Error updating user:', error);
-                res.status(500).json({
-                    message: 'Error while updating the user.',
-                    error: error.message || 'Unknown error'
-                });
+        try {
+            const user = await User.findByPk(id);
+            if (!user) {
+                return res.status(404).json({ message: 'User not found.' });
             }
-        },
+
+            user.username = username;
+            user.email = email;
+            if (password) {
+                user.password = await bcrypt.hash(password, 10);
+            }
+            await user.save();
+
+            res.json({
+                id: user.id,
+                username: user.username,
+                email: user.email,
+                profileImage: user.profileImage
+            });
+        } catch (error) {
+            console.error('Error updating user:', error);
+            res.status(500).json({
+                message: 'Error while updating the user.',
+                error: error.message || 'Unknown error'
+            });
+        }
+    },
 
     uploadImage: async (req, res) => {
         const { id } = req.params;
@@ -141,16 +149,16 @@ const userController = {
     },
 
     delete: async (req, res) => {
-        const {id} = req.params;
+        const { id } = req.params;
 
         try {
             const user = await User.findByPk(id);
             if (!user) {
-                return res.status(404).json({message: 'User not found.'});
+                return res.status(404).json({ message: 'User not found.' });
             }
 
             await user.destroy();
-            res.json({message: 'User deleted successfully.'});
+            res.json({ message: 'User deleted successfully.' });
         } catch (error) {
             console.error('Error deleting user:', error);
             res.status(500).json({
