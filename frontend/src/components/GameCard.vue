@@ -8,7 +8,6 @@ defineProps({
   }
 })
 
-// Utilise la même logique que dans CarouselBanner.vue
 const imageBaseUrl = import.meta.env.VITE_BASE_URL.replace('/api', '') + '/images/'
 </script>
 
