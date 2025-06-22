@@ -14,8 +14,8 @@ async function seedGames() {
                 price: 59.99,
                 genre: 'Action-Adventure',
                 release_date: '2017-03-03',
-                overall_rating: 9.5,
-                review: 'An open-world masterpiece with stunning visuals and gameplay.',
+                store_rating: 9.5,
+                store_review : 'An open-world masterpiece with stunning visuals and gameplay.',
                 image:'zelda-botw.jpg'
             },
             {
@@ -23,8 +23,8 @@ async function seedGames() {
                 price: 59.99,
                 genre: 'Platformer',
                 release_date: '2017-10-27',
-                overall_rating: 9.3,
-                review: 'A delightful platformer that brings back the magic of Mario.',
+                store_rating: 9.3,
+                store_review : 'A delightful platformer that brings back the magic of Mario.',
                 image: 'mario-odyssey.jpeg'
             },
             {
@@ -32,8 +32,8 @@ async function seedGames() {
                 price: 39.99,
                 genre: 'Action RPG',
                 release_date: '2016-03-24',
-                overall_rating: 9.0,
-                review: 'A challenging and rewarding experience for hardcore gamers.',
+                store_rating: 9.0,
+                store_review : 'A challenging and rewarding experience for hardcore gamers.',
                 image: 'dark-souls-3.jpg'
             },
             {
@@ -41,8 +41,8 @@ async function seedGames() {
                 price: 49.99,
                 genre: 'Action RPG',
                 release_date: '2015-05-19',
-                overall_rating: 9.8,
-                review: 'An epic tale with a vast open world and rich storytelling.',
+                store_rating: 9.8,
+                store_review : 'An epic tale with a vast open world and rich storytelling.',
                 image: 'the-witcher-3.jpg'
             },
             {
@@ -50,8 +50,8 @@ async function seedGames() {
                 price: 19.99,
                 genre: 'Platformer',
                 release_date: '2018-01-25',
-                overall_rating: 9.4,
-                review: 'A touching story about overcoming personal challenges through platforming.',
+                store_rating: 9.4,
+                store_review : 'A touching story about overcoming personal challenges through platforming.',
                 image: 'celeste.jpg'
             },
             {
@@ -59,8 +59,8 @@ async function seedGames() {
                 price: 39.99,
                 genre: 'Platformer',
                 release_date: '2024-09-06',
-                overall_rating: 9.2,
-                review: 'A charming platformer.',
+                store_rating: 9.2,
+                store_review : 'A charming platformer.',
                 image: 'astro-bot.jpg'
             },
             {
@@ -68,8 +68,8 @@ async function seedGames() {
                 price:79.99,
                 genre: 'Action',
                 release_date: '2025-06-26',
-                overall_rating: null,
-                review: null,
+                store_rating: null,
+                store_review : null,
                 image: 'death-stranding-2.jpg'
             },
             {
@@ -77,8 +77,8 @@ async function seedGames() {
                 price: 79.99,
                 genre: 'FPS',
                 release_date: '2025-04-15',
-                overall_rating: 8.4,
-                review: 'A thrilling return to the classic FPS genre with modern twists.',
+                store_rating: 8.4,
+                store_review : 'A thrilling return to the classic FPS genre with modern twists.',
                 image: 'doom.jpg'
             },
             {
@@ -86,8 +86,8 @@ async function seedGames() {
                 price: 39.99,
                 genre: 'Action RPG',
                 release_date: '2025-05-20',
-                overall_rating: 8.6,
-                review: 'A new chapter in the Elden Ring saga with expanded lore and gameplay.',
+                store_rating: 8.6,
+                store_review : 'A new chapter in the Elden Ring saga with expanded lore and gameplay.',
                 image: 'elden-ring-nightreign.jpg'
             },
             {
@@ -95,8 +95,8 @@ async function seedGames() {
                 price: 39.99,
                 genre: 'Adventure',
                 release_date: '2025-04-20',
-                overall_rating: 9.4,
-                review: 'An immersive adventure game that explores the depths of human emotion.',
+                store_rating: 9.4,
+                store_review : 'An immersive adventure game that explores the depths of human emotion.',
                 image: 'expedition-33.jpg'
             },
             {
@@ -104,8 +104,8 @@ async function seedGames() {
                 price: 59.99,
                 genre: 'RPG',
                 release_date: '2024-02-29',
-                overall_rating: 9.7,
-                review: 'A stunning continuation of the Final Fantasy VII remake, expanding the beloved story with breathtaking visuals and gameplay.',
+                store_rating: 9.7,
+                store_review : 'A stunning continuation of the Final Fantasy VII remake, expanding the beloved story with breathtaking visuals and gameplay.',
                 image: 'ff7-rebirth.jpg'
             },
             {
@@ -113,8 +113,8 @@ async function seedGames() {
                 price: 69.99,
                 genre: 'Action-Adventure',
                 release_date: '2026-06-28',
-                overall_rating: null,
-                review: null,
+                store_rating: null,
+                store_review : null,
                 image: 'gta6.jpg'
             },
             {
@@ -122,8 +122,8 @@ async function seedGames() {
                 price: 69.99,
                 genre: 'Action-Adventure',
                 release_date: '2025-10-15',
-                overall_rating: 8.1,
-                review: 'A thrilling adventure that captures the spirit of the iconic archaeologist.',
+                store_rating: 8.1,
+                store_review : 'A thrilling adventure that captures the spirit of the iconic archaeologist.',
                 image: 'indiana-jones.jpg'
             },
             {
@@ -131,8 +131,8 @@ async function seedGames() {
                 price: 59.99,
                 genre: 'Action-Adventure',
                 release_date: '2025-09-26',
-                overall_rating: null,
-                review: null,
+                store_rating: null,
+                store_review : null,
                 image: 'metal-gear-solid.jpg'
             },
             {
@@ -140,8 +140,8 @@ async function seedGames() {
                 price: 49.99,
                 genre: 'Action-Adventure',
                 release_date: '2025-09-04',
-                overall_rating: null,
-                review: null,
+                store_rating: null,
+                store_review : null,
                 image: 'hell-is-us.jpg'
             },
             {
@@ -149,8 +149,8 @@ async function seedGames() {
                 price: 39.99,
                 genre: 'Action-Adventure',
                 release_date: '2025-08-08',
-                overall_rating: null,
-                review: null,
+                store_rating: null,
+                store_review : null,
                 image: 'mafia-the-old-country.jpg'
             }
         ];

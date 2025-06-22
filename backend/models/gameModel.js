@@ -18,13 +18,17 @@ const Game = sequelize.define('Game', {
         type: DataTypes.DATEONLY,
         allowNull: false,
     },
-    overall_rating: {
+    store_rating: {
         type: DataTypes.FLOAT,
         allowNull: true,
+        validate: {
+            min: 0,
+            max: 10
+        }
     },
-    review: {
+    store_review: {
         type: DataTypes.TEXT,
-        allowNull: true,
+        allowNull: true
     },
     image: {
         type: DataTypes.STRING,
