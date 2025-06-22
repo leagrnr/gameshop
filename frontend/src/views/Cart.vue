@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CartGameComponent from "@/components/icons/CartGameComponent.vue";
+import CartGameComponent from "@/components/CartGameComponent.vue";
 </script>
 
 <template>

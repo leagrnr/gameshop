@@ -7,10 +7,12 @@ const password = ref('')
 const errorMessage = ref('')
 const router = useRouter()
 
+const baseUrl = import.meta.env.VITE_BASE_URL
+
 const handleLogin = async () => {
   errorMessage.value = ''
   try {
-    const response = await fetch('http://localhost:8080/api/users/login', {
+    const response = await fetch(`${baseUrl}/users/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email.value, password: password.value })
@@ -23,11 +25,9 @@ const handleLogin = async () => {
       return
     }
 
-    // ✅ Stocker le token
     localStorage.setItem('token', data.token)
-
-    // ✅ Rediriger vers une page protégée
-    router.push('/profile') // Remplace par ton chemin réel
+    localStorage.setItem('user', JSON.stringify(data.user))
+    router.push('/profile')
   } catch (error) {
     errorMessage.value = 'Erreur réseau'
     console.error(error)
@@ -36,26 +36,32 @@ const handleLogin = async () => {
 </script>
 
 <template>
-  <div class="login-container">
-    <h2>Connexion</h2>
-    <form @submit.prevent="handleLogin">
-      <input type="email" v-model="email" placeholder="Email" required />
-      <input type="password" v-model="password" placeholder="Mot de passe" required />
-      <button type="submit">Se connecter</button>
-    </form>
-    <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
+  <div class="min-h-[80vh] flex items-center justify-center ">
+    <div class=" rounded-2xl shadow-lg p-8 w-full max-w-md border-2 border-purple-500">
+      <h2 class="text-2xl font-bold text-center  mb-6">Connexion</h2>
+      <form @submit.prevent="handleLogin" class="space-y-4">
+        <input
+          v-model="email"
+          type="email"
+          placeholder="Email"
+          required
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+        />
+        <input
+          v-model="password"
+          type="password"
+          placeholder="Mot de passe"
+          required
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+        />
+        <button
+          type="submit"
+          class="w-full bg-purple-500 py-2 rounded-md hover:bg-purple-600 transition"
+        >
+          Se connecter
+        </button>
+        <p v-if="errorMessage" class="text-red-500 text-sm text-center">{{ errorMessage }}</p>
+      </form>
+    </div>
   </div>
 </template>
-
-<style scoped>
-.login-container {
-  margin-top: 10vh;
-  max-width: 400px;
-}
-.error {
-  color: red;
-}
-button {
-  margin-top: 30vh;
-}
-</style>

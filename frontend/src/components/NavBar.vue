@@ -15,7 +15,7 @@ watch(search, async (val) => {
   }
 })
 
-const isLoggedIn = computed(() => !!localStorage.getItem('user'))
+const isLoggedIn = computed(() => !!localStorage.getItem('token'))
 </script>
 
 <template>
@@ -54,7 +54,7 @@ const isLoggedIn = computed(() => !!localStorage.getItem('user'))
 
     <div class="flex items-center space-x-4">
       <router-link
-        :to="'/login'"
+        :to="isLoggedIn ? '/profile' : '/login'"
         aria-label="Profile"
         class="hover:text-purple-600"
       >
