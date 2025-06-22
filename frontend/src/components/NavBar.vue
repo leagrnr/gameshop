@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
 import InputText from 'primevue/inputtext'
 import api from '../services/api'
 
@@ -14,6 +14,8 @@ watch(search, async (val) => {
     results.value = []
   }
 })
+
+const isLoggedIn = computed(() => !!localStorage.getItem('user'))
 </script>
 
 <template>
@@ -49,9 +51,13 @@ watch(search, async (val) => {
     </div>
 
     <div class="flex items-center space-x-4">
-      <a href="#" aria-label="Facebook" class="hover:text-purple-600">
-        <i class="pi pi-user " />
-      </a>
+      <router-link
+        :to="isLoggedIn ? '/profile' : '/login'"
+        aria-label="Profile"
+        class="hover:text-purple-600"
+      >
+        <i class="pi pi-user" />
+      </router-link>
       <a href="#" aria-label="Facebook" class="hover:text-purple-600">
         <i class="pi pi-shopping-cart" />
       </a>

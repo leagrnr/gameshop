@@ -1,8 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import NavBar from './components/NavBar.vue'
-import CarouselBanner from './components/CarouselBanner.vue'
-import CarouselProduct from "@/components/CarouselProduct.vue"
 import api from "@/services/api"
 import Footer from "@/components/Footer.vue";
 
@@ -16,7 +14,6 @@ onMounted(async () => {
 
 <template>
   <NavBar />
-  <CarouselBanner />
-  <CarouselProduct />
+  <router-view />
   <Footer />
 </template>

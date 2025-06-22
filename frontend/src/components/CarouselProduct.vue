@@ -18,7 +18,6 @@ onMounted(async () => {
 
 <template>
   <div class="space-y-12 px-4">
-    <!-- Section Nouveautés -->
     <section>
       <h2 class="text-3xl font-bold text-white my-[5vh]">Nouveautés</h2>
       <Carousel
@@ -36,7 +35,6 @@ onMounted(async () => {
       </Carousel>
     </section>
 
-    <!-- Section Prochaines Sorties -->
     <section>
       <h2 class="text-3xl font-bold text-white my-[5vh]">Prochaines sorties</h2>
       <Carousel

@@ -4,6 +4,7 @@ import Carousel from 'primevue/carousel'
 import api from '../services/api'
 
 const games = ref([])
+const imageBaseUrl = import.meta.env.VITE_BASE_URL.replace('/api', '') + '/images/'
 
 onMounted(async () => {
   const res = await api.get('/games')
@@ -17,14 +18,13 @@ onMounted(async () => {
     :numVisible="1"
     :numScroll="1"
     class="!w-full mx-auto max-h-[75vh]"
-    :responsiveOptions="responsiveOptions"
     circular
     :autoplayInterval="3000"
     :showNavigators="false"
   >
     <template #item="slotProps">
       <img
-        :src="`http://localhost:8080/images/${slotProps.data.image.split('/').pop()}`"
+        :src="`${imageBaseUrl}${slotProps.data.image}`"
         :alt="slotProps.data.name"
         class="w-full h-[75vh] object-cover rounded"
       />
