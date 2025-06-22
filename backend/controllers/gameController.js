@@ -1,30 +1,46 @@
 const Game = require('../models/gameModel');
 
 const gameController = {
-    // Create a new game
     create: async (req, res) => {
         try {
-            const { name, price, genre, release_date, store_review, store_rating, image } = req.body;
+            const {
+                name,
+                price,
+                genre,
+                release_date,
+                store_rating,
+                description,
+                platform,
+                store_review_like,
+                store_review_dislike,
+                store_review_global,
+                image,
+                status
+            } = req.body;
             const game = await Game.create({
                 name,
                 price,
                 genre,
                 release_date,
-                store_review,
                 store_rating,
-                image
+                description,
+                platform,
+                store_review_like,
+                store_review_dislike,
+                store_review_global,
+                image,
+                status
             });
             res.status(201).json(game);
         } catch (error) {
-            console.error('Error creating game:', error);
+            console.error('Erreur lors de la création du jeu :', error);
             res.status(500).json({
-                message: 'Error while creating the game.',
-                error: error.message || 'Unknown error',
+                message: 'Erreur lors de la création du jeu.',
+                error: error.message || 'Erreur inconnue',
             });
         }
     },
 
-    // Get all games
     getAll: async (req, res) => {
         try {
             const { search } = req.query;
@@ -35,67 +51,90 @@ const gameController = {
             const games = await Game.findAll({ where });
             res.json(games);
         } catch (error) {
-            console.error('Error retrieving games:', error);
+            console.error('Erreur lors de la récupération des jeux :', error);
             res.status(500).json({
-                message: 'Error while retrieving games.',
-                error: error.message || 'Unknown error',
+                message: 'Erreur lors de la récupération des jeux.',
+                error: error.message || 'Erreur inconnue',
             });
         }
     },
 
-    // Get one game by ID
     getById: async (req, res) => {
         const { id } = req.params;
         try {
             const game = await Game.findByPk(id);
             if (!game) {
-                return res.status(404).json({ message: 'Game not found.' });
+                return res.status(404).json({ message: 'Jeu non trouvé.' });
             }
             res.json(game);
         } catch (error) {
-            console.error('Error retrieving game:', error);
+            console.error('Erreur lors de la récupération du jeu :', error);
             res.status(500).json({
-                message: 'Error while retrieving the game.',
-                error: error.message || 'Unknown error',
+                message: 'Erreur lors de la récupération du jeu.',
+                error: error.message || 'Erreur inconnue',
             });
         }
     },
 
-    // Update a game by ID
     update: async (req, res) => {
         const { id } = req.params;
-        const { name, price, genre, release_date,store_review, store_rating, image } = req.body;
+        const {
+            name,
+            price,
+            genre,
+            release_date,
+            store_rating,
+            description,
+            platform,
+            store_review_like,
+            store_review_dislike,
+            store_review_global,
+            image,
+            status
+        } = req.body;
         try {
             const game = await Game.findByPk(id);
             if (!game) {
-                return res.status(404).json({ message: 'Game not found.' });
+                return res.status(404).json({ message: 'Jeu non trouvé.' });
             }
-            await game.update({ name, price, genre, release_date, store_review, store_rating, image });
-            res.json({ message: 'Game updated successfully.', game });
+            await game.update({
+                name,
+                price,
+                genre,
+                release_date,
+                store_rating,
+                description,
+                platform,
+                store_review_like,
+                store_review_dislike,
+                store_review_global,
+                image,
+                status
+            });
+            res.json({ message: 'Jeu mis à jour avec succès.', game });
         } catch (error) {
-            console.error('Error updating game:', error);
+            console.error('Erreur lors de la mise à jour du jeu :', error);
             res.status(500).json({
-                message: 'Error while updating the game.',
-                error: error.message || 'Unknown error',
+                message: 'Erreur lors de la mise à jour du jeu.',
+                error: error.message || 'Erreur inconnue',
             });
         }
     },
 
-    // Delete a game by ID
     delete: async (req, res) => {
         const { id } = req.params;
         try {
             const game = await Game.findByPk(id);
             if (!game) {
-                return res.status(404).json({ message: 'Game not found.' });
+                return res.status(404).json({ message: 'Jeu non trouvé.' });
             }
             await game.destroy();
-            res.json({ message: 'Game deleted successfully.' });
+            res.json({ message: 'Jeu supprimé avec succès.' });
         } catch (error) {
-            console.error('Error deleting game:', error);
+            console.error('Erreur lors de la suppression du jeu :', error);
             res.status(500).json({
-                message: 'Error while deleting the game.',
-                error: error.message || 'Unknown error',
+                message: 'Erreur lors de la suppression du jeu.',
+                error: error.message || 'Erreur inconnue',
             });
         }
     }

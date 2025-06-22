@@ -26,7 +26,23 @@ const Game = sequelize.define('Game', {
             max: 10
         }
     },
-    store_review: {
+    description: {
+        type: DataTypes.TEXT,
+        allowNull: true
+    },
+    platform: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    store_review_like: {
+        type: DataTypes.TEXT,
+        allowNull: true
+    },
+    store_review_dislike: {
+        type: DataTypes.TEXT,
+        allowNull: true
+    },
+    store_review_global: {
         type: DataTypes.TEXT,
         allowNull: true
     },
