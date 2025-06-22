@@ -54,7 +54,7 @@ const isLoggedIn = computed(() => !!localStorage.getItem('user'))
 
     <div class="flex items-center space-x-4">
       <router-link
-        :to="isLoggedIn ? '/profile' : '/login'"
+        :to="'/login'"
         aria-label="Profile"
         class="hover:text-purple-600"
       >

@@ -1,5 +1,9 @@
+require('dotenv').config();
+
 const User = require('../models/userModel');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const JWT_SECRET = process.env.JWT_SECRET;
 
 
 const userController = {
@@ -10,27 +14,52 @@ const userController = {
             if (!user) {
                 return res.status(401).json({ message: 'Utilisateur non trouvé.' });
             }
-            // Si tu utilises bcrypt pour hasher les mots de passe :
-            // const valid = await bcrypt.compare(password, user.password);
-            // if (!valid) {
-            //     return res.status(401).json({ message: 'Mot de passe incorrect.' });
-            // }
-            // Si tu n'utilises pas bcrypt :
-            if (user.password !== password) {
+
+            const valid = await bcrypt.compare(password, user.password);
+            if (!valid) {
                 return res.status(401).json({ message: 'Mot de passe incorrect.' });
             }
-            res.json({ id: user.id, username: user.username, email: user.email });
+
+            const token = jwt.sign(
+                {
+                    id: user.id,
+                    username: user.username,
+                    email: user.email
+                },
+                JWT_SECRET,
+                { expiresIn: '1h' }
+            );
+            res.json({
+                message: 'Connexion réussie',
+                token,
+                user: {
+                    id: user.id,
+                    username: user.username,
+                    email: user.email
+                }
+            });
         } catch (error) {
             res.status(500).json({ message: 'Erreur lors de la connexion.' });
         }
     },
 
+
     create: async (req, res) => {
         try {
             const { username, email, password } = req.body;
+            const hashedPassword = await bcrypt.hash(password, 10);
 
-            const user = await User.create({ username, email, password });
-            res.status(201).json(user);
+            const user = await User.create({
+                username,
+                email,
+                password: hashedPassword
+            });
+
+            res.status(201).json({
+                id: user.id,
+                username: user.username,
+                email: user.email
+            });
         } catch (error) {
             console.error('Error creating user:', error);
             res.status(500).json({
@@ -42,7 +71,7 @@ const userController = {
 
     getAll: async (req, res) => {
         try {
-            const users = await User.findAll({ attributes: ['id', 'username', 'email'] });
+            const users = await User.findAll({ attributes: ['id', 'username', 'email', 'profileImage'] });
             res.json(users);
         } catch (error) {
             console.error('Error retrieving users:', error);
@@ -80,7 +109,9 @@ const userController = {
 
                 user.username = username;
                 user.email = email;
-                user.password = password;
+                if (password) {
+                    user.password = await bcrypt.hash(password, 10);
+                }
                 await user.save();
 
                 res.json(user);
@@ -92,6 +123,22 @@ const userController = {
                 });
             }
         },
+
+    uploadImage: async (req, res) => {
+        const { id } = req.params;
+        try {
+            const user = await User.findByPk(id);
+            if (!user) return res.status(404).json({ message: 'User not found.' });
+
+            user.profileImage = `/images/profiles/${req.file.filename}`;
+            await user.save();
+
+            res.json({ message: 'Image mise à jour', image: user.profileImage });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Erreur lors de l’upload' });
+        }
+    },
 
     delete: async (req, res) => {
         const {id} = req.params;

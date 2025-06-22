@@ -1,29 +1,61 @@
 <script setup>
 import { ref } from 'vue'
-import api from '@/services/api'
 import { useRouter } from 'vue-router'
 
 const email = ref('')
 const password = ref('')
-const error = ref('')
+const errorMessage = ref('')
 const router = useRouter()
 
-const login = async () => {
+const handleLogin = async () => {
+  errorMessage.value = ''
   try {
-    const res = await api.post('/users/login', { email: email.value, password: password.value })
-    localStorage.setItem('user', JSON.stringify(res.data))
-    router.push('/')
-  } catch (e) {
-    error.value = e.response?.data?.message || 'Erreur de connexion'
+    const response = await fetch('http://localhost:8080/api/users/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email.value, password: password.value })
+    })
+
+    const data = await response.json()
+
+    if (!response.ok) {
+      errorMessage.value = data.message || 'Erreur de connexion'
+      return
+    }
+
+    // ✅ Stocker le token
+    localStorage.setItem('token', data.token)
+
+    // ✅ Rediriger vers une page protégée
+    router.push('/profile') // Remplace par ton chemin réel
+  } catch (error) {
+    errorMessage.value = 'Erreur réseau'
+    console.error(error)
   }
 }
 </script>
 
 <template>
-  <form @submit.prevent="login" class="mt-[20vh] w-96 mx-auto p-6  shadow-md rounded">
-    <input v-model="email" type="email" placeholder="Email" required />
-    <input v-model="password" type="password" placeholder="Mot de passe" required />
-    <button type="submit">Se connecter</button>
-    <div v-if="error" style="color:red">{{ error }}</div>
-  </form>
+  <div class="login-container">
+    <h2>Connexion</h2>
+    <form @submit.prevent="handleLogin">
+      <input type="email" v-model="email" placeholder="Email" required />
+      <input type="password" v-model="password" placeholder="Mot de passe" required />
+      <button type="submit">Se connecter</button>
+    </form>
+    <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
+  </div>
 </template>
+
+<style scoped>
+.login-container {
+  margin-top: 10vh;
+  max-width: 400px;
+}
+.error {
+  color: red;
+}
+button {
+  margin-top: 30vh;
+}
+</style>

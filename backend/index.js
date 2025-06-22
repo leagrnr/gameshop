@@ -8,7 +8,7 @@ const reviewRoutes = require('./routes/reviewRoute');
 const userRoutes = require('./routes/userRoute');
 
 app.use(cors({
-    origin: 'http://localhost:443',
+    origin: true,
     credentials: true
 }));
 app.use(express.json());

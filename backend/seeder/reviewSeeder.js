@@ -1,9 +1,8 @@
-// backend/seeder/reviewSeeder.js
 const { Review } = require('../models');
 
 async function seedReviews() {
     try {
-        await Review.sync({ force: true }); // Réinitialise la table Review
+        await Review.sync({ force: true });
         console.log('Table Review créée avec succès.');
 
         const reviews = [
