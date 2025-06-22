@@ -2,20 +2,40 @@
 import { ref, watch, computed } from 'vue'
 import InputText from 'primevue/inputtext'
 import api from '../services/api'
+import { useRouter } from 'vue-router'
 
 const search = ref('')
 const results = ref([])
+const router = useRouter()
+
+const isLoggedIn = computed(() => !!localStorage.getItem('token'))
 
 watch(search, async (val) => {
   if (val) {
-    const res = await api.get('/games', { params: { search: val } })
-    results.value = res.data
+    try {
+      const res = await api.get('/games', { params: { search: val } })
+      results.value = res.data
+    } catch (err) {
+      console.error('Erreur lors de la recherche :', err)
+    }
   } else {
     results.value = []
   }
 })
 
-const isLoggedIn = computed(() => !!localStorage.getItem('token'))
+function goToDetail(gameId) {
+  const path = `/games/${gameId}`
+
+  if (router.currentRoute.value.path === path) {
+    router.replace('/').then(() => {
+      router.push(path)
+    })
+  } else {
+    router.push(path)
+  }
+  search.value = ''
+  results.value = []
+}
 </script>
 
 <template>
@@ -46,6 +66,7 @@ const isLoggedIn = computed(() => !!localStorage.getItem('token'))
           v-for="game in results"
           :key="game.id"
           class="px-4 py-2 hover:bg-purple-100 cursor-pointer"
+          @click="goToDetail(game.id)"
         >
           {{ game.name }}
         </li>
