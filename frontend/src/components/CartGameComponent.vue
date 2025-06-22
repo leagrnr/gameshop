@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { useCartStore } from '@/stores/cart'
 import { computed } from 'vue'
+import { calculateCartTotal } from '@/utils/cart'
 
 const cart = useCartStore()
 const imageBaseUrl = import.meta.env.VITE_BASE_URL.replace('/api', '') + '/images/'
 
 const cartTotal = computed(() =>
-  cart.items.reduce((sum, item) => sum + Number(item.price), 0).toFixed(2)
+  calculateCartTotal(cart.items)
 )
 </script>
 
@@ -40,7 +41,6 @@ const cartTotal = computed(() =>
           <p class="text-2xl font-bold">{{ item.price }}€</p>
         </div>
       </div>
-      <!-- Total + Bouton -->
       <div class="flex items-center justify-between mt-12 px-4">
         <p class="text-2xl font-semibold">
           Total : <span class="text-purple-400">{{ cartTotal }}€</span>
