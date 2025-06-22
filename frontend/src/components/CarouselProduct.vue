@@ -40,7 +40,6 @@ onMounted(async () => {
       <Carousel
         :value="prochainesSorties"
         :numVisible="3"
-        :numScroll="1"
         class="mx-auto w-[95vw]"
         circular
       >

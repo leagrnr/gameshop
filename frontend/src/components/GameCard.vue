@@ -1,7 +1,8 @@
 <script setup>
+import { useRouter } from 'vue-router'
 import Button from './Button.vue'
 
-defineProps({
+const props = defineProps({
   game: {
     type: Object,
     required: true
@@ -9,6 +10,11 @@ defineProps({
 })
 
 const imageBaseUrl = import.meta.env.VITE_BASE_URL.replace('/api', '') + '/images/'
+const router = useRouter()
+
+const goToDetail = () => {
+  router.push(`/games/${props.game.id}`)
+}
 </script>
 
 <template>
@@ -22,7 +28,12 @@ const imageBaseUrl = import.meta.env.VITE_BASE_URL.replace('/api', '') + '/image
     <div class="absolute inset-0 p-6 flex flex-col justify-end z-20">
       <h2 class="text-lg font-bold text-center">{{ game.name }}</h2>
       <p class="text-md font-bold mt-1 text-center">{{ game.price }}€</p>
-      <Button :game="game" />
+      <button
+        @click="goToDetail"
+        class="mt-4 font-bold py-2 px-4 rounded-full transition-colors duration-200 bg-purple-600 hover:bg-purple-700 text-white"
+      >
+        Voir le détail
+      </button>
     </div>
   </div>
 </template>

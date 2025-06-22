@@ -1,24 +1,24 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import Button from './Button.vue'
 
 const props = defineProps({
-  game: {
-    type: Object,
-    required: true
-  },
-  imageBaseUrl: {
-    type: String,
-    required: true
-  }
+  game: { type: Object, required: true },
+  imageBaseUrl: { type: String, required: true }
 })
-
-const selectedPlatform = ref('')
 
 const platforms = computed(() => {
   return Array.isArray(props.game.platform)
     ? props.game.platform
     : props.game.platform.split(',')
+})
+
+const selectedPlatform = ref('')
+
+onMounted(() => {
+  if (platforms.value.length > 0) {
+    selectedPlatform.value = platforms.value[0].trim()
+  }
 })
 
 const reviewLikeHtml = computed(() =>
@@ -72,7 +72,12 @@ const reviewGlobalHtml = computed(() =>
 
         <div class="flex items-center justify-around">
           <p class="text-2xl font-bold">{{ game.price }}€</p>
-          <Button :game="game" class="min-w-[150px] text-center px-12" />
+          <Button
+            :game="game"
+            :platform="selectedPlatform"
+            class="min-w-[150px] text-center px-12"
+            :disabled="!selectedPlatform"
+          />
         </div>
       </div>
     </div>

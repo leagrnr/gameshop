@@ -25,7 +25,9 @@ const isLoggedIn = computed(() => !!localStorage.getItem('user'))
     </div>
 
     <ul class="flex space-x-6 font-medium">
-      <li><a href="#" class="hover:text-purple-600">Accueil</a></li>
+      <li>
+        <router-link to="/" class="hover:text-purple-600">Accueil</router-link>
+      </li>
       <li><a href="#" class="hover:text-purple-600">Jeux</a></li>
       <li><a href="#" class="hover:text-purple-600">Magasins</a></li>
     </ul>
@@ -58,10 +60,10 @@ const isLoggedIn = computed(() => !!localStorage.getItem('user'))
       >
         <i class="pi pi-user" />
       </router-link>
-      <a href="#" aria-label="Facebook" class="hover:text-purple-600">
+      <a href="/cart" aria-label="shopping" class="hover:text-purple-600">
         <i class="pi pi-shopping-cart" />
       </a>
-        <a href="#" aria-label="Facebook" class="hover:text-purple-600 flex items-center space-x-1">
+        <a href="#" aria-label="language" class="hover:text-purple-600 flex items-center space-x-1">
           <i class="pi pi-globe" />
           <p>FR</p>
         </a>
