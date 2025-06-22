@@ -52,7 +52,7 @@ const hasReviewContent = computed(() => {
     </div>
 
     <div class="w-full lg:w-1/2 flex items-center justify-center mt-6 lg:mt-0">
-      <div class="w-full max-w-xl flex flex-col justify-between h-full text-white space-y-4">
+      <div class="w-full max-w-xl flex flex-col justify-between h-full text-white lg:space-y-20 space-y-10">
         <h1 class="text-2xl sm:text-3xl font-bold text-center uppercase">
           {{ game.name }}
         </h1>
