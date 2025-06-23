@@ -6,7 +6,6 @@ async function seedUsers() {
         await User.sync({ force: true });
         console.log('Table User créée avec succès.');
 
-        // ✅ Hasher les mots de passe
         const users = await Promise.all([
             {
                 username: 'alice',

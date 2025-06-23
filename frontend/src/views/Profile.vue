@@ -19,13 +19,11 @@ const selectedFile = ref(null)
 const username = ref('')
 const email = ref('')
 
-// 🖼️ Affiche l'image
 const getImageUrl = (path) => {
   const apiUrl = import.meta.env.VITE_BASE_URL
   return `${apiUrl.replace('/api', '')}${path}`
 }
 
-// 📥 Charge user
 const loadUser = async () => {
   try {
     const res = await fetch(`${baseUrl}/users/${userId}`, {
@@ -40,7 +38,6 @@ const loadUser = async () => {
   }
 }
 
-// 📤 Upload image
 const handleFile = (e) => {
   selectedFile.value = e.target.files[0]
 }
@@ -67,7 +64,6 @@ const upload = async () => {
   }
 }
 
-// 🔄 Mise à jour profil
 const updateProfile = async () => {
   try {
     const res = await fetch(`${baseUrl}/users/${userId}`, {
@@ -92,14 +88,12 @@ const updateProfile = async () => {
   }
 }
 
-// 🚪 Déconnexion
 const logout = () => {
   localStorage.removeItem('token')
   localStorage.removeItem('user')
   router.push('/login')
 }
 
-// ❌ Suppression
 const deleteAccount = async () => {
   const confirmation = confirm('Es-tu sûr de vouloir supprimer ton compte ? Cette action est irréversible.')
   if (!confirmation) return
@@ -129,7 +123,6 @@ onMounted(() => {
   <div class="flex justify-center mt-[10vh] text-white px-4">
     <div class="flex flex-col sm:flex-row items-center sm:items-start gap-8 max-w-5xl w-full">
 
-      <!-- 📷 Image -->
       <div class="w-40 h-40 rounded-full overflow-hidden shadow-lg border-4 border-white">
         <img
           v-if="imagePath"
@@ -139,13 +132,9 @@ onMounted(() => {
         />
       </div>
 
-      <!-- 📄 Profil -->
       <div class="flex flex-col items-center w-full space-y-6 text-center">
 
-        <!-- Nom -->
         <h2 class="text-2xl font-semibold">{{ username }}</h2>
-
-        <!-- Boutons principaux -->
         <button
           class="px-5 py-2 rounded-full font-semibold hover:bg-white hover:text-black transition border-2 border-white"
           @click="showSection('modifier')"
@@ -174,7 +163,6 @@ onMounted(() => {
           </button>
         </div>
 
-        <!-- Zone dynamique -->
         <div class="mt-8 w-full max-w-md">
           <p v-if="selectedSection === 'achats'">Aucun achat</p>
           <p v-else-if="selectedSection === 'avis'">Aucun avis</p>
